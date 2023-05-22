@@ -2,4 +2,5 @@
 
 ## Here I have used:
 
+_psql_ (in terminal)
 _SQL_

@@ -1,6 +1,10 @@
 -- updates the release date of the album with the id 1
 -- and sets the release date from 1989 to 3000
 -- as well as renaming the title
-UPDATE albums
-  SET release_year = '3000', title = 'New Title'
-    WHERE id = 1; -- => UPDATE 1 meaning it has updated 1 record
+
+-- UPDATE albums
+--   SET release_year = '1989', title = 'Doolittle'
+--     WHERE id = 1; 
+
+UPDATE albums SET release_year = '1972' WHERE id = '3';
+SELECT release_year FROM albums WHERE id = '3';

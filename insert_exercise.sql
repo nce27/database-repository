@@ -24,3 +24,5 @@ INSERT INTO artists
 INSERT INTO albums 
   ( title, release_year)
   VALUES( 'The Ooz', '2017');
+
+  UPDATE albums SET artist_id = '6' WHERE id = '14';

@@ -4,4 +4,4 @@
 
 _psql_ (in terminal)
 
-_SQL_
+_SQL_ (in **TablePlus** (a Graphical User Interface))

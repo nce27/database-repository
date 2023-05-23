@@ -1,3 +1,4 @@
+require 'database_conntection'
 DatabaseConnection.connect('music_library_test')
 # Whenever the rspec test run, it connects to the music_library_test database,
 # rather than the the music_library one

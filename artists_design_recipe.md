@@ -1,3 +1,10 @@
+# Single Table Design Recipe Template
+
+_Copy this recipe template to design and create a database table from a specification._
+
+## 1. Extract nouns from the user stories or specification
+
+```
 # EXAMPLE USER STORY:
 # (analyse only the relevant part - here the final line).
 
@@ -8,30 +15,36 @@ I want to keep a list of albums' titles.
 As a music lover,
 So I can organise my records,
 I want to keep a list of albums' release year.
+```
 
+```
 Nouns:
 
 album, title, release year
+```
 
-# DESIGN THE COLUMN TYPES
+## 2. Infer the Table Name and Columns
 
-(e.g.) boolean, numeric, bigint, int, text
+Put the different nouns in this table. Replace the example with your own nouns.
 
-_The primary key id will always be the first column & will be serial_
+| Record                | Properties          |
+| --------------------- | ------------------  |
+| album                 | title, release year
 
-## EXAMPLE:
+Name of the table (always plural): `albums` 
+
+Column names: `title`, `release_year`
+
+## 3. Decide the column types.
+
+# EXAMPLE:
 
 id: SERIAL
 title: text
 release_year: int
 
 
-# WRITE THE SQL
-## EXAMPLE:
-
-id: SERIAL
-title: text
-release_year: int
+## 4. Write the SQL.
 
 ```sql
 -- EXAMPLE
@@ -47,5 +60,54 @@ CREATE TABLE albums (
 
 ```
 
-# CREATE THE TABLE
+## 5. Create the table.
+
+```bash
 psql -h 127.0.0.1 database_name < albums_table.sql
+
+```
+
+
+
+```ruby
+class ArtistRepository
+
+  # Selects all records
+  # No arguments
+
+  def all
+  # Executes the SQL query:
+  # SELECT id, name, genre FROM artists;
+
+
+  #### => Return an array of Artist objects.
+  end
+end
+
+```
+# Test Examples
+
+
+```ruby
+
+# 1 
+# Get all students
+
+repo = ArtistRespository.new #creates new object
+
+artists = repo.all 
+artists.length # => 2
+artists.first.id # => 1
+artists.first.name # => 'Pixies'
+
+
+```
+```ruby
+def reset_student_table
+  seed_sql = File.read('spec/seeds_students.sql')
+  connection = PG.connect({ host: '127.0.0.1', dbname: 'students'})
+  connection.exec(seed_sql)
+end
+
+
+```
